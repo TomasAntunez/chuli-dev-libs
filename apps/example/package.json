@@ -1,0 +1,14 @@
+{
+  "name": "@chuli-dev/example",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Example app to test libraries",
+  "scripts": {
+    "start:dev": "tsx watch src/main.ts"
+  },
+  "author": "chuli-dev",
+  "devDependencies": {
+    "tsx": "^4.7.0"
+  }
+}

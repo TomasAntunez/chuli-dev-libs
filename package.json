@@ -1,0 +1,22 @@
+{
+  "name": "chuli-dev-libs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Typescript libraries monorepo",
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "scripts": {
+    "start:dev:example": "npm run --workspace=@chuli-dev/example start:dev"
+  },
+  "author": "chuli-dev",
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
