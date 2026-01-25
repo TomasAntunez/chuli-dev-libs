@@ -1,4 +1,4 @@
-# A collection of high-quality TypeScript libraries for modern development across Node.js, web, React, and React Native platforms.
+# A collection of production-ready TypeScript libraries for Node.js, web, React, and React Native.
 
 ## ✨ Features
 
@@ -30,7 +30,7 @@ This is a monorepo managed with npm workspaces. To get started with development:
 
 ```bash
 # Clone the repository
-git clone https://github.com/TomasAntunez/chuli-dev-libs.git
+git clone git@github.com:TomasAntunez/chuli-dev-libs.git
 cd chuli-dev-libs
 
 # Install dependencies
@@ -47,7 +47,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+3. Commit your changes (`git commit -m 'feat: add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
@@ -67,4 +67,4 @@ If you find this project useful, please consider giving it a star on GitHub!
 
 ---
 
-Made with ❤️ by chuli-dev
+Made with ❤️
