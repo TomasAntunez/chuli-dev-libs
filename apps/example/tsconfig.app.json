@@ -1,0 +1,3 @@
+{
+  "extends": "@chuli-dev/typescript-config/node"
+}

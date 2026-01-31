@@ -9,6 +9,6 @@
   },
   "author": "chuli-dev",
   "devDependencies": {
-    "tsx": "^4.7.0"
+    "@chuli-dev/typescript-config": "^1.0.0"
   }
 }
