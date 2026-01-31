@@ -1,0 +1,37 @@
+{
+  "name": "@chuli-dev/typescript-config",
+  "version": "1.0.0",
+  "description": "TypeScript base configuration for libraries and applications",
+  "keywords": [
+    "typescript",
+    "tsconfig",
+    "config"
+  ],
+  "author": "chuli-dev",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "base.json",
+    "lib.json",
+    "node.json",
+    "node.lib.json",
+    "web.json",
+    "react.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    "./base": "./base.json",
+    "./lib": "./lib.json",
+    "./node": "./node.json",
+    "./node.lib": "./node.lib.json",
+    "./web": "./web.json",
+    "./react": "./react.json"
+  },
+  "peerDependencies": {
+    "typescript": ">=5"
+  },
+  "sideEffects": false
+}
