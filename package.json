@@ -2,6 +2,7 @@
   "name": "chuli-dev-libs",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Typescript libraries monorepo",
   "workspaces": [
     "apps/*",
@@ -12,9 +13,10 @@
   },
   "author": "chuli-dev",
   "devDependencies": {
-    "prettier": "^3.6.2",
-    "rimraf": "^6.0.1",
-    "typescript": "^5.9.2"
+    "prettier": "^3.8.1",
+    "rimraf": "^6.1.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": ">=20"
