@@ -81,7 +81,7 @@ Choose the configuration that matches your project:
 
 ## 📄 License
 
-MIT - see the [LICENSE](../../LICENSE) file for details.
+MIT - see the [LICENSE](LICENSE) file for details.
 
 ## 👤 Author
 
