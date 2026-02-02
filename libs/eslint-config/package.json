@@ -1,0 +1,41 @@
+{
+  "name": "@chuli-dev/eslint-config",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ESLint base configuration for libraries and applications",
+  "keywords": [
+    "eslint",
+    "config"
+  ],
+  "author": "chuli-dev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomasAntunez/chuli-dev-libs.git",
+    "directory": "libs/eslint-config"
+  },
+  "homepage": "https://github.com/TomasAntunez/chuli-dev-libs/blob/main/libs/eslint-config/README.md",
+  "bugs": {
+    "url": "https://github.com/TomasAntunez/chuli-dev-libs/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [],
+  "peerDependencies": {
+    "eslint": ">=9",
+    "typescript": ">=5"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.3.0",
+    "globals": "^17.3.0"
+  }
+}
