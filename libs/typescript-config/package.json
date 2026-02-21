@@ -1,6 +1,7 @@
 {
   "name": "@chuli-dev/typescript-config",
-  "version": "1.1.0",
+  "version": "2.0.0",
+  "type": "module",
   "description": "TypeScript base configuration for libraries and applications",
   "keywords": [
     "typescript",

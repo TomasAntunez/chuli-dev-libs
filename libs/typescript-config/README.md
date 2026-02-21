@@ -5,7 +5,7 @@ Strict TypeScript configuration presets optimized for modern ESM development.
 ## ✨ Features
 
 - **ESM-first** - Optimized for native ES Modules
-- **Strict by default** - All TypeScript validations enabled
+- **Strict by default** - Most strict TypeScript validations enabled
 - **Multi-platform** - Configurations for Node.js, Web, React, and libraries
 - **Zero-config** - Sensible defaults that work out of the box
 
@@ -73,6 +73,11 @@ Choose the configuration that matches your project:
 | **`node.lib`** | Node.js library optimized             | Node.js packages        |
 | **`web`**      | Browser environment                   | Web applications        |
 | **`react`**    | React with JSX support                | React applications      |
+
+## 📝 Notes
+
+- Library presets only enable `declaration` and `declarationMap`. Set `outDir`, `include`, and `exclude` in your project.
+- `noUnusedLocals` is not enabled by default. Turn it on if you want it.
 
 ## 🔧 Requirements
 
