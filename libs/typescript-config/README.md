@@ -25,8 +25,16 @@ Choose the configuration that matches your project:
 {
   "extends": "@chuli-dev/typescript-config/node",
   "compilerOptions": {
-    "outDir": "./dist"
-  }
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
 }
 ```
 
@@ -36,8 +44,16 @@ Choose the configuration that matches your project:
 {
   "extends": "@chuli-dev/typescript-config/web",
   "compilerOptions": {
-    "outDir": "./dist"
-  }
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
 }
 ```
 
@@ -47,8 +63,18 @@ Choose the configuration that matches your project:
 {
   "extends": "@chuli-dev/typescript-config/react",
   "compilerOptions": {
-    "outDir": "./dist"
-  }
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
+  ]
 }
 ```
 
@@ -58,10 +84,41 @@ Choose the configuration that matches your project:
 {
   "extends": "@chuli-dev/typescript-config/lib",
   "compilerOptions": {
-    "outDir": "./dist"
-  }
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
 }
 ```
+
+Use this setup for framework-agnostic libraries when your source code lives in `src/`.
+
+### Node.js Library (npm package)
+
+```json
+{
+  "extends": "@chuli-dev/typescript-config/node.lib",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
+}
+```
+
+Use this setup for libraries that run in Node.js and need Node.js typings.
 
 ## 📋 Available Configurations
 
@@ -70,13 +127,15 @@ Choose the configuration that matches your project:
 | **`base`**     | Minimal setup with strict validations | Custom setups           |
 | **`lib`**      | Library with declaration generation   | Publishing npm packages |
 | **`node`**     | Node.js with ES modules               | Server applications     |
-| **`node.lib`** | Node.js library optimized             | Node.js packages        |
+| **`node.lib`** | Node.js library with Node typings     | Node.js packages        |
 | **`web`**      | Browser environment                   | Web applications        |
 | **`react`**    | React with JSX support                | React applications      |
 
 ## 📝 Notes
 
-- Library presets only enable `declaration` and `declarationMap`. Set `outDir`, `include`, and `exclude` in your project.
+- Library presets only enable `declaration` and `declarationMap`. Configure `rootDir`, `outDir`, `include`, and `exclude` in your project.
+- Use `lib` for framework-agnostic libraries, and `node.lib` when your library targets Node.js and needs Node typings.
+- The `exclude` patterns shown are examples. Keep tests in `exclude` only if they should not be part of your build output.
 - `noUnusedLocals` is not enabled by default. Turn it on if you want it.
 
 ## 🔧 Requirements
