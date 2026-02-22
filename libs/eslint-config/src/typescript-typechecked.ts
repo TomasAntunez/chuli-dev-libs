@@ -1,21 +1,34 @@
 import tseslint from 'typescript-eslint';
 import type { Linter } from 'eslint';
+import { typescriptBase } from './typescript-base.js';
 
-export const typescriptTypechecked = [
-  ...tseslint.configs.strictTypeChecked,
+const typecheckedFiles = ['**/*.{ts,tsx,mts}'];
+
+export const typescriptTypechecked: Linter.Config[] = [
+  ...tseslint.configs.strictTypeChecked.map((config) => ({
+    ...config,
+    files: typecheckedFiles,
+  })),
 
   {
     name: '@chuli-dev/typescript/typechecked/parser-options',
-    files: ['**/*.{ts,tsx,mts,cts}'],
+    files: typecheckedFiles,
     languageOptions: {
       parserOptions: {
         projectService: true,
         tsconfigRootDir: process.cwd(),
       },
     },
+  },
+
+  ...typescriptBase,
+
+  {
+    name: '@chuli-dev/typescript/typechecked/rules',
+    files: typecheckedFiles,
     rules: {
       '@typescript-eslint/no-floating-promises': 'error',
       '@typescript-eslint/no-misused-promises': 'error',
     },
   },
-] satisfies Linter.Config[];
+];

@@ -13,7 +13,7 @@ const importSortGroups: string[][] = [
   ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
 ];
 
-export const base = [
+export const base: Linter.Config[] = [
   {
     name: '@chuli-dev/base/ignores',
     ignores: ['**/node_modules/**', '**/dist/**', '**/build/**', '**/.next/**', '**/coverage/**'],
@@ -23,7 +23,7 @@ export const base = [
 
   {
     name: '@chuli-dev/base/rules',
-    files: ['**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}'],
+    files: ['**/*.{js,mjs,jsx,ts,tsx,mts}'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -54,4 +54,4 @@ export const base = [
       'simple-import-sort/exports': 'warn',
     },
   },
-] satisfies Linter.Config[];
+];
