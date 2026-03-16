@@ -9,11 +9,7 @@
     "libs/*"
   ],
   "scripts": {
-    "build:eslint-config": "npm run --workspace=@chuli-dev/eslint-config build",
-    "check-pack:typescript-config": "npm pack --dry-run --workspace=@chuli-dev/typescript-config",
-    "check-pack:eslint-config": "npm pack --dry-run --workspace=@chuli-dev/eslint-config",
-    "publish:typescript-config": "npm publish --workspace=@chuli-dev/typescript-config",
-    "publish:eslint-config": "npm publish --workspace=@chuli-dev/eslint-config",
+    "build:libs": "npm run build --workspaces --if-present",
     "start:dev:example": "npm run --workspace=@chuli-dev/example start:dev"
   },
   "author": "chuli-dev",

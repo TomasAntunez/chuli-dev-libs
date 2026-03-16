@@ -1,0 +1,54 @@
+name: Publish packages to npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      typescript-config:
+        description: 'Publish @chuli-dev/typescript-config'
+        required: false
+        type: boolean
+        default: false
+      eslint-config:
+        description: 'Publish @chuli-dev/eslint-config'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  publish:
+    name: Publish packages to npm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install --no-package-lock
+
+      - name: Build (root script)
+        run: npm run build:libs
+
+      - name: Publish selected packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          selected=$(echo '${{ toJson(github.event.inputs) }}' | jq -r 'to_entries[] | select(.value == "true") | .key')
+
+          if [ -z "$selected" ]; then
+            echo "No packages selected. Nothing to publish."
+            exit 0
+          fi
+
+          while IFS= read -r pkg; do
+            echo "Publishing @chuli-dev/$pkg..."
+            npm publish --workspace="@chuli-dev/$pkg"
+          done <<< "$selected"
