@@ -13,7 +13,9 @@
     "start:dev:example": "npm run --workspace=@chuli-dev/example start:dev"
   },
   "author": "chuli-dev",
+  "prettier": "@chuli-dev/prettier-config",
   "devDependencies": {
+    "@chuli-dev/prettier-config": "*",
     "@types/node": "^25.2.0",
     "prettier": "^3.8.1",
     "rimraf": "^6.1.2",

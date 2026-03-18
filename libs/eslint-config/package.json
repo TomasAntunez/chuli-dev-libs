@@ -38,7 +38,7 @@
     }
   },
   "devDependencies": {
-    "@chuli-dev/typescript-config": "^2.0.0",
+    "@chuli-dev/typescript-config": "*",
     "eslint": ">=9",
     "eslint-plugin-simple-import-sort": ">=12",
     "eslint-plugin-unused-imports": ">=4",

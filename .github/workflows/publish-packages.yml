@@ -4,12 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       typescript-config:
-        description: 'Publish @chuli-dev/typescript-config'
+        description: '@chuli-dev/typescript-config'
         required: false
         type: boolean
         default: false
       eslint-config:
-        description: 'Publish @chuli-dev/eslint-config'
+        description: '@chuli-dev/eslint-config'
+        required: false
+        type: boolean
+        default: false
+      prettier-config:
+        description: '@chuli-dev/prettier-config'
         required: false
         type: boolean
         default: false
@@ -39,9 +44,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          set -euo pipefail
+          set -uo pipefail
 
-          selected=$(echo '${{ toJson(github.event.inputs) }}' | jq -r 'to_entries[] | select(.value == "true") | .key')
+          selected=$(echo '${{ toJson(inputs) }}' | jq -r 'to_entries[] | select(.value == true) | .key')
 
           if [ -z "$selected" ]; then
             echo "No packages selected. Nothing to publish."
@@ -50,5 +55,10 @@ jobs:
 
           while IFS= read -r pkg; do
             echo "Publishing @chuli-dev/$pkg..."
-            npm publish --workspace="@chuli-dev/$pkg"
+
+            if npm publish --workspace="@chuli-dev/$pkg"; then
+              echo "✅ @chuli-dev/$pkg published successfully"
+            else
+              echo "❌ Failed to publish @chuli-dev/$pkg"
+            fi
           done <<< "$selected"

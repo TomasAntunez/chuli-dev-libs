@@ -1,0 +1,36 @@
+{
+  "name": "@chuli-dev/prettier-config",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Prettier shared configuration",
+  "keywords": [
+    "prettier",
+    "config"
+  ],
+  "author": "chuli-dev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomasAntunez/chuli-dev-libs.git",
+    "directory": "libs/prettier-config"
+  },
+  "homepage": "https://github.com/TomasAntunez/chuli-dev-libs/blob/main/libs/prettier-config/README.md",
+  "bugs": {
+    "url": "https://github.com/TomasAntunez/chuli-dev-libs/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "prettier.config.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": "./prettier.config.json"
+  },
+  "peerDependencies": {
+    "prettier": ">=3"
+  },
+  "sideEffects": false
+}
