@@ -1,0 +1,10 @@
+export { AuthenticationError } from './domain/authentication.error.js';
+export { AuthorizationError } from './domain/authorization.error.js';
+export { BaseError, type BaseErrorOptions } from './domain/base.error.js';
+export { BusinessRuleError } from './domain/business-rule.error.js';
+export { NotFoundError } from './domain/not-found.error.js';
+export { RateLimitError } from './domain/rate-limit.error.js';
+export { ValidationError } from './domain/validation.error.js';
+export { ConfigurationError } from './infrastructure/configuration.error.js';
+export { ExternalServiceError } from './infrastructure/external-service.error.js';
+export { TimeoutError } from './infrastructure/timeout.error.js';

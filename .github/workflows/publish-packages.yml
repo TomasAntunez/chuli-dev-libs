@@ -25,6 +25,11 @@ on:
         required: false
         type: boolean
         default: false
+      errors:
+        description: '@chuli-dev/errors'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   publish:
