@@ -24,7 +24,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p tsconfig.json",
-    "prepack": "npm run build"
+    "prepare": "npm run build"
   },
   "files": [
     "dist",
@@ -39,23 +39,25 @@
   },
   "devDependencies": {
     "@chuli-dev/typescript-config": "*",
+    "@eslint/js": ">=9",
     "eslint": ">=9",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-n": ">=17",
     "eslint-plugin-simple-import-sort": ">=12",
     "eslint-plugin-unused-imports": ">=4",
-    "typescript-eslint": ">=8",
-    "@eslint/js": ">=9",
     "globals": ">=16",
-    "eslint-plugin-n": ">=17"
+    "typescript-eslint": ">=8"
   },
   "peerDependencies": {
+    "@eslint/js": ">=9",
     "eslint": ">=9",
-    "typescript": ">=5",
+    "eslint-config-prettier": ">=10",
+    "eslint-plugin-n": ">=17",
     "eslint-plugin-simple-import-sort": ">=12",
     "eslint-plugin-unused-imports": ">=4",
-    "typescript-eslint": ">=8",
-    "@eslint/js": ">=9",
     "globals": ">=16",
-    "eslint-plugin-n": ">=17"
+    "typescript": ">=5",
+    "typescript-eslint": ">=8"
   },
   "peerDependenciesMeta": {
     "typescript": {

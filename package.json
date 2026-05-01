@@ -9,7 +9,6 @@
     "libs/*"
   ],
   "scripts": {
-    "build:libs": "npm run build --workspaces --if-present",
     "start:dev:example": "npm run --workspace=@chuli-dev/example start:dev"
   },
   "author": "chuli-dev",

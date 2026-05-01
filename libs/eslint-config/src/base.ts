@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import prettierConfig from 'eslint-config-prettier/flat';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
@@ -54,4 +55,6 @@ export const base: Linter.Config[] = [
       'simple-import-sort/exports': 'warn',
     },
   },
+
+  prettierConfig,
 ];
