@@ -16,7 +16,7 @@ Strict ESLint flat-config presets optimized for modern ESM TypeScript projects.
 Install:
 
 ```bash
-npm install --save-dev @chuli-dev/eslint-config eslint eslint-plugin-simple-import-sort eslint-plugin-unused-imports @eslint/js globals eslint-plugin-n
+npm install --save-dev @chuli-dev/eslint-config eslint eslint-config-prettier eslint-plugin-simple-import-sort eslint-plugin-unused-imports @eslint/js globals eslint-plugin-n
 ```
 
 Config (`eslint.config.js`):
@@ -32,7 +32,7 @@ export default [...base, ...node];
 Install:
 
 ```bash
-npm install --save-dev @chuli-dev/eslint-config eslint typescript typescript-eslint eslint-plugin-simple-import-sort eslint-plugin-unused-imports @eslint/js globals eslint-plugin-n
+npm install --save-dev @chuli-dev/eslint-config eslint eslint-config-prettier typescript typescript-eslint eslint-plugin-simple-import-sort eslint-plugin-unused-imports @eslint/js globals eslint-plugin-n
 ```
 
 Config (`eslint.config.js`):
@@ -50,7 +50,7 @@ Use this setup when you want strict TS rules with faster linting.
 Install:
 
 ```bash
-npm install --save-dev @chuli-dev/eslint-config eslint typescript typescript-eslint eslint-plugin-simple-import-sort eslint-plugin-unused-imports @eslint/js globals eslint-plugin-n
+npm install --save-dev @chuli-dev/eslint-config eslint eslint-config-prettier typescript typescript-eslint eslint-plugin-simple-import-sort eslint-plugin-unused-imports @eslint/js globals eslint-plugin-n
 ```
 
 Config (`eslint.config.js`):
@@ -76,6 +76,7 @@ Use this setup when you want rules that require TypeScript type information.
 ## 📝 Notes
 
 - This package targets **ESM-only** codebases.
+- The `base` preset includes `eslint-config-prettier` to disable rules that conflict with Prettier formatting.
 - `typescriptTypechecked` applies type-aware rules only to `*.ts`, `*.tsx`, and `*.mts` files.
 - For type-aware linting, ensure your project has a valid TypeScript setup (`tsconfig.json`).
 
