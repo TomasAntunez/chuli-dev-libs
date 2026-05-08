@@ -6,7 +6,8 @@
   "description": "Example app to test libraries",
   "scripts": {
     "start:dev": "tsx watch src/main.ts",
-    "lint": "eslint ."
+    "types:check": "tsc --noEmit -p tsconfig.json",
+    "lint:check": "eslint . --max-warnings 0"
   },
   "author": "chuli-dev",
   "devDependencies": {

@@ -29,12 +29,7 @@ Choose the configuration that matches your project:
     "outDir": "dist"
   },
   "include": ["src/**/*.ts"],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["dist", "node_modules", "**/*.test.ts", "**/*.spec.ts"]
 }
 ```
 
@@ -48,12 +43,7 @@ Choose the configuration that matches your project:
     "outDir": "dist"
   },
   "include": ["src/**/*.ts"],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["dist", "node_modules", "**/*.test.ts", "**/*.spec.ts"]
 }
 ```
 
@@ -88,12 +78,7 @@ Choose the configuration that matches your project:
     "outDir": "dist"
   },
   "include": ["src/**/*.ts"],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["dist", "node_modules", "**/*.test.ts", "**/*.spec.ts"]
 }
 ```
 
@@ -109,12 +94,7 @@ Use this setup for framework-agnostic libraries when your source code lives in `
     "outDir": "dist"
   },
   "include": ["src/**/*.ts"],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["dist", "node_modules", "**/*.test.ts", "**/*.spec.ts"]
 }
 ```
 

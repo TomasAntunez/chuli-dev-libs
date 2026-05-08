@@ -48,6 +48,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Check types
+        run: npm run types:check
+
+      - name: Lint
+        run: npm run lint:check
+
+      - name: Check formatting
+        run: npm run format:check
+
       - name: Publish selected packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

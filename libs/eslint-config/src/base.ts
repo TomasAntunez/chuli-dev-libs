@@ -1,9 +1,9 @@
 import js from '@eslint/js';
+import type { Linter } from 'eslint';
 import prettierConfig from 'eslint-config-prettier/flat';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
-import type { Linter } from 'eslint';
 
 const importSortGroups: string[][] = [
   ['^\\u0000'],

@@ -26,8 +26,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p tsconfig.json",
-    "prepack": "npm run build",
-    "lint": "eslint ."
+    "prepare": "npm run build",
+    "lint:check": "eslint . --max-warnings 0"
   },
   "files": [
     "dist",

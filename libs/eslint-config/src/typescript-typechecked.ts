@@ -1,5 +1,6 @@
-import tseslint from 'typescript-eslint';
 import type { Linter } from 'eslint';
+import tseslint from 'typescript-eslint';
+
 import { typescriptBase } from './typescript-base.js';
 
 const typecheckedFiles = ['**/*.{ts,tsx,mts}'];

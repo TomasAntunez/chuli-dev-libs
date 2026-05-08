@@ -49,23 +49,23 @@ try {
 
 ### Domain
 
-| Error                    | Description                                                         |
-| ------------------------ | ------------------------------------------------------------------- |
-| **`BaseError`**          | Abstract base class extended by every error in this library         |
-| **`AuthenticationError`** | The caller could not be authenticated                              |
-| **`AuthorizationError`**  | The caller is authenticated but not allowed to perform the action  |
-| **`BusinessRuleError`**   | A domain invariant or business rule was violated                   |
-| **`NotFoundError`**       | A required resource does not exist                                 |
-| **`RateLimitError`**      | A domain-defined usage limit was exceeded                          |
-| **`ValidationError`**     | Input data did not satisfy the expected shape or constraints       |
+| Error                     | Description                                                       |
+| ------------------------- | ----------------------------------------------------------------- |
+| **`BaseError`**           | Abstract base class extended by every error in this library       |
+| **`AuthenticationError`** | The caller could not be authenticated                             |
+| **`AuthorizationError`**  | The caller is authenticated but not allowed to perform the action |
+| **`BusinessRuleError`**   | A domain invariant or business rule was violated                  |
+| **`NotFoundError`**       | A required resource does not exist                                |
+| **`RateLimitError`**      | A domain-defined usage limit was exceeded                         |
+| **`ValidationError`**     | Input data did not satisfy the expected shape or constraints      |
 
 ### Infrastructure
 
-| Error                      | Description                                                       |
-| -------------------------- | ----------------------------------------------------------------- |
+| Error                      | Description                                                        |
+| -------------------------- | ------------------------------------------------------------------ |
 | **`ConfigurationError`**   | The application is misconfigured (missing env vars, invalid setup) |
-| **`ExternalServiceError`** | A call to an external service failed                              |
-| **`TimeoutError`**         | An operation took longer than the allowed time                    |
+| **`ExternalServiceError`** | A call to an external service failed                               |
+| **`TimeoutError`**         | An operation took longer than the allowed time                     |
 
 ## 🛠️ The `BaseError` Contract
 

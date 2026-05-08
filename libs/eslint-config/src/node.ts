@@ -1,6 +1,6 @@
+import type { Linter } from 'eslint';
 import pluginN from 'eslint-plugin-n';
 import globals from 'globals';
-import type { Linter } from 'eslint';
 
 export const node: Linter.Config[] = [
   {
