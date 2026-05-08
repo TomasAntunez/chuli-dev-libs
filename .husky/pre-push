@@ -1,0 +1,20 @@
+set -e
+
+echo ""
+echo "→ Installing dependencies (builds libs via their prepare hook)"
+HUSKY=0 npm install
+
+echo ""
+echo "→ Type checking apps"
+npm run types:check
+
+echo ""
+echo "→ Linting"
+npm run lint:check
+
+echo ""
+echo "→ Checking formatting"
+npm run format:check
+
+echo ""
+echo "✓ All checks passed"

@@ -9,6 +9,7 @@
     "libs/*"
   ],
   "scripts": {
+    "prepare": "husky",
     "types:check": "npm run types:check --workspaces --if-present",
     "format:check": "prettier --check .",
     "lint:check": "npm run lint:check --workspaces --if-present",
@@ -18,7 +19,10 @@
   "prettier": "@chuli-dev/prettier-config",
   "devDependencies": {
     "@chuli-dev/prettier-config": "*",
+    "@commitlint/cli": "^21.0.0",
+    "@commitlint/config-conventional": "^21.0.0",
     "@types/node": "^25.2.0",
+    "husky": "^9.1.7",
     "prettier": "^3.8.1",
     "rimraf": "^6.1.2",
     "tsx": "^4.21.0",
