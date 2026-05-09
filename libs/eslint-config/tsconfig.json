@@ -2,8 +2,7 @@
   "extends": "@chuli-dev/typescript-config/node.lib",
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "dist",
-    "declarationMap": false
+    "outDir": "dist"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["dist", "node_modules"]

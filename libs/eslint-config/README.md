@@ -1,84 +1,75 @@
 # @chuli-dev/eslint-config
 
-Strict ESLint flat-config presets optimized for modern ESM TypeScript projects.
+Self-contained ESLint flat-config presets for modern TypeScript projects.
 
 ## ✨ Features
 
-- **ESM-first** - Presets are designed for native ES Modules only
+- **One import, one preset** - Each preset is a complete ESLint flat config; just `export default` it
+- **Three orthogonal axes** - TypeScript (`none` / `strict` / `type-aware`) × Node.js × ESM enforcement
 - **Flat config ready** - Built for ESLint v9+ `eslint.config.js`
-- **Composable presets** - Mix `base`, `node`, and TypeScript presets as needed
 - **Practical defaults** - Strong rules for code quality, imports, and consistency
 
-## 🚀 Setups by Use Case
-
-### JavaScript / ESM only (`base` + `node`)
-
-Install:
+## 📦 Installation
 
 ```bash
-npm install --save-dev @chuli-dev/eslint-config eslint eslint-config-prettier eslint-plugin-simple-import-sort eslint-plugin-unused-imports @eslint/js globals eslint-plugin-n
+npm install --save-dev @chuli-dev/eslint-config eslint @eslint/js eslint-config-prettier eslint-plugin-simple-import-sort eslint-plugin-unused-imports eslint-plugin-n globals typescript typescript-eslint
 ```
 
-Config (`eslint.config.js`):
+Each preset only depends on a subset of the peers above:
+
+| Peer dependency                    | Required by                  |
+| ---------------------------------- | ---------------------------- |
+| `eslint`                           | All presets                  |
+| `@eslint/js`                       | All presets                  |
+| `eslint-config-prettier`           | All presets                  |
+| `eslint-plugin-simple-import-sort` | All presets                  |
+| `eslint-plugin-unused-imports`     | All presets                  |
+| `globals`                          | All presets                  |
+| `eslint-plugin-n`                  | Any `node` / `*Node*` preset |
+| `typescript`                       | Any `typescript*` preset     |
+| `typescript-eslint`                | Any `typescript*` preset     |
+
+> With npm v7+, peer dependencies are installed automatically when you add `@chuli-dev/eslint-config`.
+
+## 🚀 Quick Start
+
+Pick the preset that matches your project and use it directly as your flat config:
 
 ```js
-import { base, node } from '@chuli-dev/eslint-config';
+// eslint.config.js
+import { typescriptTypecheckedNodeEsm } from '@chuli-dev/eslint-config';
 
-export default [...base, ...node];
+export default typescriptTypecheckedNodeEsm;
 ```
 
-### TypeScript without type-aware linting (`base` + `node` + `typescript`)
+## 📋 Available Presets
 
-Install:
+| Preset                             | TypeScript | Node.js | ESM enforcement |
+| ---------------------------------- | ---------- | ------- | --------------- |
+| **`base`**                         | —          | —       | —               |
+| **`node`**                         | —          | ✓       | —               |
+| **`esm`**                          | —          | —       | ✓               |
+| **`nodeEsm`**                      | —          | ✓       | ✓               |
+| **`typescript`**                   | strict     | —       | —               |
+| **`typescriptEsm`**                | strict     | —       | ✓               |
+| **`typescriptNode`**               | strict     | ✓       | —               |
+| **`typescriptNodeEsm`**            | strict     | ✓       | ✓               |
+| **`typescriptTypechecked`**        | type-aware | —       | —               |
+| **`typescriptTypecheckedEsm`**     | type-aware | —       | ✓               |
+| **`typescriptTypecheckedNode`**    | type-aware | ✓       | —               |
+| **`typescriptTypecheckedNodeEsm`** | type-aware | ✓       | ✓               |
 
-```bash
-npm install --save-dev @chuli-dev/eslint-config eslint eslint-config-prettier typescript typescript-eslint eslint-plugin-simple-import-sort eslint-plugin-unused-imports @eslint/js globals eslint-plugin-n
-```
+### What each axis adds
 
-Config (`eslint.config.js`):
-
-```js
-import { base, node, typescript } from '@chuli-dev/eslint-config';
-
-export default [...base, ...node, ...typescript];
-```
-
-Use this setup when you want strict TS rules with faster linting.
-
-### TypeScript with type-aware linting (`base` + `node` + `typescriptTypechecked`)
-
-Install:
-
-```bash
-npm install --save-dev @chuli-dev/eslint-config eslint eslint-config-prettier typescript typescript-eslint eslint-plugin-simple-import-sort eslint-plugin-unused-imports @eslint/js globals eslint-plugin-n
-```
-
-Config (`eslint.config.js`):
-
-```js
-import { base, node, typescriptTypechecked } from '@chuli-dev/eslint-config';
-
-export default [...base, ...node, ...typescriptTypechecked];
-```
-
-Use this setup when you want rules that require TypeScript type information.
-
-## 📋 Available Configurations
-
-| Configuration               | Description                                          | Use Case                              |
-| --------------------------- | ---------------------------------------------------- | ------------------------------------- |
-| **`base`**                  | Core JS/TS quality rules + import ordering           | Any ESM project                       |
-| **`node`**                  | Node.js environment + ESM-only restrictions          | Node.js apps and libraries            |
-| **`typescript`**            | Strict TypeScript rules (without type-aware linting) | TS projects prioritizing lint speed   |
-| **`typescriptTypechecked`** | Strict TypeScript rules with type-aware linting      | TS projects needing deeper guarantees |
-| **`typescriptBase`**        | Shared TS overrides used by both TS presets          | Advanced custom composition           |
+- **TypeScript `strict`** - Enables `typescript-eslint`'s strict ruleset without type information.
+- **TypeScript `type-aware`** - Adds rules that require type information (`no-floating-promises`, `no-misused-promises`, etc.). Requires a valid `tsconfig.json`.
+- **Node.js** - Adds Node globals and `eslint-plugin-n` rules (`no-deprecated-api`, `prefer-node-protocol`, `no-process-exit`).
+- **ESM enforcement** - Forces `sourceType: 'module'`, disables CJS globals, and forbids `require()` / `module.exports` syntax.
 
 ## 📝 Notes
 
-- This package targets **ESM-only** codebases.
-- The `base` preset includes `eslint-config-prettier` to disable rules that conflict with Prettier formatting.
-- `typescriptTypechecked` applies type-aware rules only to `*.ts`, `*.tsx`, and `*.mts` files.
-- For type-aware linting, ensure your project has a valid TypeScript setup (`tsconfig.json`).
+- All presets include `eslint-config-prettier` to disable rules that conflict with Prettier formatting.
+- Type-aware presets (`*Typechecked*`) lint only `*.ts`, `*.tsx`, `*.mts` files and require a `tsconfig.json` at the project root (via `projectService`).
 
 ## 🔧 Requirements
 

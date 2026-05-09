@@ -1,3 +1,3 @@
-import { base, node, typescriptTypechecked } from '@chuli-dev/eslint-config';
+import { typescriptTypecheckedNodeEsm } from '@chuli-dev/eslint-config';
 
-export default [...base, ...node, ...typescriptTypechecked];
+export default typescriptTypecheckedNodeEsm;
