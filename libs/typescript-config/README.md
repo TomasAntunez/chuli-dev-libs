@@ -116,7 +116,7 @@ For projects that target CommonJS (or for the CJS half of a dual ESM/CJS build),
 }
 ```
 
-Available CJS presets: `lib.cjs`, `node.cjs`, `node.cjs.lib`. They emit `module: "CommonJS"` with `moduleResolution: "Node10"` and disable `verbatimModuleSyntax` (incompatible with CommonJS output).
+Available CJS presets: `lib.cjs`, `node.cjs`, `node.cjs.lib`. They emit `module: "CommonJS"` and disable `verbatimModuleSyntax` (incompatible with CommonJS output).
 
 ## 📋 Available Configurations
 
@@ -134,7 +134,7 @@ Available CJS presets: `lib.cjs`, `node.cjs`, `node.cjs.lib`. They emit `module:
 
 ## 📝 Notes
 
-- Library presets only enable `declaration` and `declarationMap`. Configure `rootDir`, `outDir`, `include`, and `exclude` in your project.
+- Library presets only enable `declaration`. Configure `rootDir`, `outDir`, `include`, and `exclude` in your project. Turn on `declarationMap` yourself if you want `.d.ts.map` files.
 - Use `lib` / `lib.cjs` for framework-agnostic libraries, and `node.lib` / `node.cjs.lib` when your library needs Node typings.
 - For dual ESM/CJS builds, run `tsc` twice with `lib` (or `node.lib`) and `lib.cjs` (or `node.cjs.lib`) outputting to separate folders.
 - The `exclude` patterns shown are examples. Keep tests in `exclude` only if they should not be part of your build output.

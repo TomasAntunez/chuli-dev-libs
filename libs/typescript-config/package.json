@@ -2,11 +2,13 @@
   "name": "@chuli-dev/typescript-config",
   "version": "2.1.0",
   "type": "module",
-  "description": "TypeScript base configuration for libraries and applications",
+  "description": "Strict TypeScript configuration presets for ESM and CommonJS projects",
   "keywords": [
     "typescript",
     "tsconfig",
-    "config"
+    "presets",
+    "esm",
+    "commonjs"
   ],
   "author": "chuli-dev",
   "license": "MIT",

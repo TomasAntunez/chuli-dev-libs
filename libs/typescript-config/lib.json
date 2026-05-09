@@ -4,7 +4,6 @@
   "compilerOptions": {
     "types": [],
 
-    "declaration": true,
-    "declarationMap": true
+    "declaration": true
   }
 }
