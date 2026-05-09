@@ -1,12 +1,12 @@
 {
   "name": "@chuli-dev/cli",
-  "version": "1.0.1",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "CLI application for library management",
+  "description": "Internal CLI for monorepo tasks",
   "scripts": {
     "start:dev": "tsx src/main.ts",
-    "types:check": "tsc --noEmit -p tsconfig.app.json",
+    "types:check": "tsc --noEmit",
     "lint:check": "eslint . --max-warnings 0"
   },
   "author": "chuli-dev",
