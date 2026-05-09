@@ -7,6 +7,7 @@ Domain-oriented error classes for TypeScript applications.
 - **DDD-friendly** - Errors organized by domain and infrastructure layers
 - **Minimal & flexible** - Lightweight base class, the consumer decides how to handle, log, or serialize
 - **ESM-first** - Native ES Modules, ships TypeScript declarations
+- **Cross-platform** - Works in Node.js, modern browsers, Bun and Deno (no external runtime dependencies)
 - **Native `Error` compatible** - Built on top of `Error` with full support for `cause`, `stack`, and `instanceof`
 - **Optional `code` and `metadata`** - Attach machine-readable identifiers and structured context when you need them
 
@@ -90,7 +91,7 @@ abstract class BaseError extends Error {
 - **`code`** - Optional machine-readable identifier
 - **`metadata`** - Optional structured context to aid debugging or logging
 - **`cause`** - Standard ES2022 option, supported through `ErrorOptions`
-- **`stack`** - Captured via `Error.captureStackTrace` when available
+- **`stack`** - Captured via `Error.captureStackTrace` when available (Node.js, Bun, Chromium-based browsers); falls back to the standard `Error.stack` on engines without it (Firefox, Safari)
 
 ### Wrapping the cause
 

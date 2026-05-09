@@ -1,5 +1,5 @@
 {
-  "extends": "@chuli-dev/typescript-config/node.lib",
+  "extends": "@chuli-dev/typescript-config/lib",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
