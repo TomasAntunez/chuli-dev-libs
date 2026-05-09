@@ -1,6 +1,6 @@
 {
   "name": "@chuli-dev/errors",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "description": "Domain-oriented error classes for TypeScript applications",
   "keywords": [
@@ -25,7 +25,10 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && tsc -p tsconfig.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:pkg-jsons": "tsx ../../apps/cli/src/main.ts write-dist-package-jsons",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:pkg-jsons",
     "prepare": "npm run build",
     "lint:check": "eslint . --max-warnings 0"
   },
@@ -36,8 +39,14 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
     }
   },
   "devDependencies": {

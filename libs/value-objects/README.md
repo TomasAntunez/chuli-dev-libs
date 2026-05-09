@@ -8,7 +8,7 @@ Value Object base classes and primitives for DDD-style TypeScript applications.
 - **Strict encapsulation** - `protected` constructors and `static` factory methods only
 - **Reusable validation** - Static `validate` / `validateString` methods you can call without instantiating
 - **Customizable error messages** - Override the default message per call, with structured metadata in every error
-- **ESM-first** - Native ES Modules, ships TypeScript declarations
+- **Dual ESM/CJS** - Ships both module formats with proper conditional exports and TypeScript declarations
 - **Cross-platform** - Works in Node.js, modern browsers, Bun and Deno (no external runtime dependencies)
 
 ## 📦 Installation
@@ -187,7 +187,6 @@ A few rules to keep the contract consistent:
 
 ## 🔧 Requirements
 
-- **Node.js** `>=20`
 - **TypeScript** `>=5` (only if consuming the type declarations)
 
 ## 📄 License

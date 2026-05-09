@@ -6,7 +6,7 @@ Domain-oriented error classes for TypeScript applications.
 
 - **DDD-friendly** - Errors organized by domain and infrastructure layers
 - **Minimal & flexible** - Lightweight base class, the consumer decides how to handle, log, or serialize
-- **ESM-first** - Native ES Modules, ships TypeScript declarations
+- **Dual ESM/CJS** - Ships both module formats with proper conditional exports and TypeScript declarations
 - **Cross-platform** - Works in Node.js, modern browsers, Bun and Deno (no external runtime dependencies)
 - **Native `Error` compatible** - Built on top of `Error` with full support for `cause`, `stack`, and `instanceof`
 - **Optional `code` and `metadata`** - Attach machine-readable identifiers and structured context when you need them
@@ -131,7 +131,6 @@ throw new InsufficientBalanceError('Account balance is insufficient', {
 
 ## 🔧 Requirements
 
-- **Node.js** `>=20`
 - **TypeScript** `>=5` (only if consuming the type declarations)
 
 ## 📄 License
