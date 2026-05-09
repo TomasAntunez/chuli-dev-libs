@@ -1,59 +1,77 @@
-# A collection of production-ready TypeScript libraries for Node.js, web, React, and React Native.
+# chuli-dev-libs
+
+A monorepo of focused, opinionated TypeScript libraries published under the `@chuli-dev` scope on npm.
 
 ## ✨ Features
 
-- **Cross-platform TypeScript libraries** - Works seamlessly across all platforms
-- **ESM-first** - Built with ES Modules with CommonJS compatibility
-- **Modern tooling** - Optimized for contemporary development workflows
-- **Zero-config** - Sensible defaults that just work
+- **TypeScript-first** - Strict configs, full type declarations, ESM-first packages
+- **Dual ESM/CJS where it matters** - `errors` and `value-objects` ship both formats; configs stay ESM-only
+- **Cross-platform domain libs** - `errors` and `value-objects` run in Node.js, modern browsers, Bun and Deno
+- **Modern tooling** - Flat-config ESLint, strict `tsconfig` presets, opinionated Prettier defaults
+- **Independent packages** - Pick only what you need
 
-## 🚀 Getting Started
+## 📦 Packages
 
-Browse the `libs/` directory to explore available packages. Each package can be installed independently from npm.
+| Package                                                  | Description                                                                |
+| -------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [`@chuli-dev/typescript-config`](libs/typescript-config) | Strict TypeScript configuration presets for ESM and CommonJS projects      |
+| [`@chuli-dev/eslint-config`](libs/eslint-config)         | Self-contained ESLint flat-config presets for modern TypeScript projects   |
+| [`@chuli-dev/prettier-config`](libs/prettier-config)     | Shared Prettier configuration                                              |
+| [`@chuli-dev/errors`](libs/errors)                       | Domain-oriented error classes for TypeScript applications                  |
+| [`@chuli-dev/value-objects`](libs/value-objects)         | Value Object base classes and primitives for DDD-style TypeScript projects |
 
-## 🎯 Platform Support
-
-Our libraries are designed to work seamlessly across:
-
-- **Node.js** - Server-side applications and APIs
-- **Web** - Modern web applications and SPAs
-- **React** - React applications and components
-- **React Native** - Mobile applications
+Each package is published independently to npm. See its README for installation and usage.
 
 ## 🏗️ Development
 
-This is a monorepo managed with npm workspaces. To get started with development:
+This is a monorepo managed with **npm workspaces**.
 
 **Prerequisites:**
 
-- Node.js >= 20
+- Node.js `>=20`
+
+**Setup:**
 
 ```bash
-# Clone the repository
 git clone git@github.com:TomasAntunez/chuli-dev-libs.git
 cd chuli-dev-libs
-
-# Install dependencies
 npm install
+```
+
+`npm install` builds the libraries that need a build (via the `prepare` lifecycle hook), so workspaces and external consumers both end up with a ready-to-use `dist/`.
+
+**Quality gates** (each fans out to workspaces):
+
+```bash
+npm run types:check    # tsc --noEmit per app (libs typecheck during build)
+npm run lint:check     # eslint with --max-warnings 0
+npm run format:check   # prettier check across the repo
+```
+
+Run a script on a single workspace with `--workspace`:
+
+```bash
+npm run lint:check --workspace=@chuli-dev/errors
+npm run build --workspace=@chuli-dev/eslint-config
 ```
 
 ## 📚 Documentation
 
-Each package contains its own documentation in its respective directory. Check the individual package README files for detailed usage instructions.
+Each package has its own README under `libs/`. The `apps/` folder contains internal apps (`example`, `cli`) used to dogfood the libraries.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+Contributions are welcome. For major changes, please open an issue first to discuss what you'd like to change.
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'feat: add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+3. Commit your changes following the [Conventional Commits](https://www.conventionalcommits.org/) spec
+4. Push to the branch
 5. Open a Pull Request
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+MIT - see the [LICENSE](./LICENSE) file for details.
 
 ## 👤 Author
 
@@ -63,7 +81,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## ⭐ Support
 
-If you find this project useful, please consider giving it a star on GitHub!
+If you find this project useful, consider giving it a star on GitHub.
 
 ---
 
