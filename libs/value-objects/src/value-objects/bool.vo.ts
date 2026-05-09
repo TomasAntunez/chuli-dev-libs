@@ -1,10 +1,10 @@
 import { InvalidValueError } from '../errors/invalid-value.error.js';
 import type { ValidateOptions } from '../interfaces/validate-options.js';
 
-import { PrimitiveVo } from './primitive.vo.js';
-import { StringVo } from './string.vo.js';
+import { Primitive } from './primitive.vo.js';
+import { Text } from './text.vo.js';
 
-export class BooleanVo extends PrimitiveVo<boolean> {
+export class Bool extends Primitive<boolean> {
   static validate(value: boolean, options: ValidateOptions = {}): void {
     if (typeof value !== 'boolean') {
       throw new InvalidValueError(options.message ?? 'Value must be a boolean', {
@@ -14,7 +14,7 @@ export class BooleanVo extends PrimitiveVo<boolean> {
   }
 
   static validateString(value: string, options: ValidateOptions = {}): boolean {
-    const trimmed = StringVo.validate(value, options);
+    const trimmed = Text.validate(value, options);
 
     if (trimmed === 'true') {
       return true;
@@ -28,13 +28,13 @@ export class BooleanVo extends PrimitiveVo<boolean> {
     });
   }
 
-  static fromBoolean(value: boolean, options: ValidateOptions = {}): BooleanVo {
-    BooleanVo.validate(value, options);
-    return new BooleanVo(value);
+  static fromBoolean(value: boolean, options: ValidateOptions = {}): Bool {
+    Bool.validate(value, options);
+    return new Bool(value);
   }
 
-  static fromString(value: string, options: ValidateOptions = {}): BooleanVo {
-    return new BooleanVo(BooleanVo.validateString(value, options));
+  static fromString(value: string, options: ValidateOptions = {}): Bool {
+    return new Bool(Bool.validateString(value, options));
   }
 
   toBoolean(): boolean {

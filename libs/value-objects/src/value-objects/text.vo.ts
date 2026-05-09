@@ -1,9 +1,9 @@
 import { InvalidValueError } from '../errors/invalid-value.error.js';
 import type { ValidateOptions } from '../interfaces/validate-options.js';
 
-import { PrimitiveVo } from './primitive.vo.js';
+import { Primitive } from './primitive.vo.js';
 
-export class StringVo extends PrimitiveVo<string> {
+export class Text extends Primitive<string> {
   static validate(value: string, options: ValidateOptions = {}): string {
     if (typeof value !== 'string') {
       throw new InvalidValueError(options.message ?? 'Value must be a string', {
@@ -21,8 +21,8 @@ export class StringVo extends PrimitiveVo<string> {
     return trimmed;
   }
 
-  static fromString(value: string, options: ValidateOptions = {}): StringVo {
-    return new StringVo(StringVo.validate(value, options));
+  static fromString(value: string, options: ValidateOptions = {}): Text {
+    return new Text(Text.validate(value, options));
   }
 
   override toString(): string {

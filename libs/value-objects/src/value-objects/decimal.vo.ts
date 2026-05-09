@@ -1,10 +1,10 @@
 import { InvalidValueError } from '../errors/invalid-value.error.js';
 import type { ValidateOptions } from '../interfaces/validate-options.js';
 
-import { PrimitiveVo } from './primitive.vo.js';
-import { StringVo } from './string.vo.js';
+import { Primitive } from './primitive.vo.js';
+import { Text } from './text.vo.js';
 
-export class NumberVo extends PrimitiveVo<number> {
+export class Decimal extends Primitive<number> {
   static validate(value: number, options: ValidateOptions = {}): void {
     if (!Number.isFinite(value)) {
       throw new InvalidValueError(options.message ?? 'Value must be a finite number', {
@@ -14,7 +14,7 @@ export class NumberVo extends PrimitiveVo<number> {
   }
 
   static validateString(value: string, options: ValidateOptions = {}): number {
-    const trimmed = StringVo.validate(value, options);
+    const trimmed = Text.validate(value, options);
 
     const parsed = Number(trimmed);
     if (!Number.isFinite(parsed)) {
@@ -26,13 +26,13 @@ export class NumberVo extends PrimitiveVo<number> {
     return parsed;
   }
 
-  static fromNumber(value: number, options: ValidateOptions = {}): NumberVo {
-    NumberVo.validate(value, options);
-    return new NumberVo(value);
+  static fromNumber(value: number, options: ValidateOptions = {}): Decimal {
+    Decimal.validate(value, options);
+    return new Decimal(value);
   }
 
-  static fromString(value: string, options: ValidateOptions = {}): NumberVo {
-    return new NumberVo(NumberVo.validateString(value, options));
+  static fromString(value: string, options: ValidateOptions = {}): Decimal {
+    return new Decimal(Decimal.validateString(value, options));
   }
 
   toNumber(): number {

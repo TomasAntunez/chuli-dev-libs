@@ -1,9 +1,9 @@
 import { InvalidValueError } from '../errors/invalid-value.error.js';
 import type { ValidateOptions } from '../interfaces/validate-options.js';
 
-import { NumberVo } from './number.vo.js';
+import { Decimal } from './decimal.vo.js';
 
-export class PositiveNumberVo extends NumberVo {
+export class PositiveDecimal extends Decimal {
   static override validate(value: number, options: ValidateOptions = {}): void {
     super.validate(value, options);
 
@@ -26,12 +26,12 @@ export class PositiveNumberVo extends NumberVo {
     return parsed;
   }
 
-  static override fromNumber(value: number, options: ValidateOptions = {}): PositiveNumberVo {
-    PositiveNumberVo.validate(value, options);
-    return new PositiveNumberVo(value);
+  static override fromNumber(value: number, options: ValidateOptions = {}): PositiveDecimal {
+    PositiveDecimal.validate(value, options);
+    return new PositiveDecimal(value);
   }
 
-  static override fromString(value: string, options: ValidateOptions = {}): PositiveNumberVo {
-    return new PositiveNumberVo(PositiveNumberVo.validateString(value, options));
+  static override fromString(value: string, options: ValidateOptions = {}): PositiveDecimal {
+    return new PositiveDecimal(PositiveDecimal.validateString(value, options));
   }
 }

@@ -22,10 +22,10 @@ npm install @chuli-dev/value-objects @chuli-dev/errors
 ## 🚀 Quick Start
 
 ```ts
-import { NumberVo, UuidVo } from '@chuli-dev/value-objects';
+import { Decimal, Uuid } from '@chuli-dev/value-objects';
 
-const id = UuidVo.create();
-const price = NumberVo.fromNumber(19.99);
+const id = Uuid.create();
+const price = Decimal.fromNumber(19.99);
 
 console.log(id.toString()); // e.g. '7c9e6679-7425-40de-944b-e07fc1f90ae7'
 console.log(price.toNumber()); // 19.99
@@ -34,9 +34,9 @@ console.log(price.toNumber()); // 19.99
 Parsing untrusted input (throws `InvalidValueError` on failure):
 
 ```ts
-import { IntegerVo } from '@chuli-dev/value-objects';
+import { Integer } from '@chuli-dev/value-objects';
 
-const age = IntegerVo.fromString(req.body.age, {
+const age = Integer.fromString(req.body.age, {
   message: 'Age must be an integer',
 });
 ```
@@ -44,10 +44,10 @@ const age = IntegerVo.fromString(req.body.age, {
 Catching validation errors:
 
 ```ts
-import { IntegerVo, InvalidValueError } from '@chuli-dev/value-objects';
+import { Integer, InvalidValueError } from '@chuli-dev/value-objects';
 
 try {
-  IntegerVo.fromString('not-a-number');
+  Integer.fromString('not-a-number');
 } catch (err) {
   if (err instanceof InvalidValueError) {
     console.error(err.message, err.metadata); // { value: 'not-a-number' }
@@ -62,48 +62,48 @@ try {
 | Class             | Description                                                         |
 | ----------------- | ------------------------------------------------------------------- |
 | **`ValueObject`** | Abstract marker base class. Defines the `isEqualTo` contract        |
-| **`PrimitiveVo`** | Abstract base for single-value primitives (string, number, boolean) |
+| **`Primitive`**   | Abstract base for single-value primitives (string, number, boolean) |
 
 ### Primitives
 
-| Class           | Description                                                 |
-| --------------- | ----------------------------------------------------------- |
-| **`StringVo`**  | Non-empty string (trimmed)                                  |
-| **`NumberVo`**  | Finite number (rejects `NaN` / `Infinity`)                  |
-| **`BooleanVo`** | Boolean. Strict `'true'` / `'false'` parsing                |
-| **`IntegerVo`** | Integer number                                              |
-| **`UuidVo`**    | RFC 4122 UUID (versions 1-7). `create()` generates a new v4 |
+| Class         | Description                                                 |
+| ------------- | ----------------------------------------------------------- |
+| **`Text`**    | Non-empty string (trimmed)                                  |
+| **`Decimal`** | Finite number (rejects `NaN` / `Infinity`)                  |
+| **`Bool`**    | Boolean. Strict `'true'` / `'false'` parsing                |
+| **`Integer`** | Integer number                                              |
+| **`Uuid`**    | RFC 4122 UUID (versions 1-7). `create()` generates a new v4 |
 
 ### Numeric refinements
 
-| Class                      | Constraint   |
-| -------------------------- | ------------ |
-| **`PositiveNumberVo`**     | `value > 0`  |
-| **`NegativeNumberVo`**     | `value < 0`  |
-| **`NonNegativeNumberVo`**  | `value >= 0` |
-| **`NonPositiveNumberVo`**  | `value <= 0` |
-| **`PositiveIntegerVo`**    | `value > 0`  |
-| **`NegativeIntegerVo`**    | `value < 0`  |
-| **`NonNegativeIntegerVo`** | `value >= 0` |
-| **`NonPositiveIntegerVo`** | `value <= 0` |
+| Class                    | Constraint   |
+| ------------------------ | ------------ |
+| **`PositiveDecimal`**    | `value > 0`  |
+| **`NegativeDecimal`**    | `value < 0`  |
+| **`NonNegativeDecimal`** | `value >= 0` |
+| **`NonPositiveDecimal`** | `value <= 0` |
+| **`PositiveInteger`**    | `value > 0`  |
+| **`NegativeInteger`**    | `value < 0`  |
+| **`NonNegativeInteger`** | `value >= 0` |
+| **`NonPositiveInteger`** | `value <= 0` |
 
 ## 🛠️ The Validation Contract
 
 Every Value Object exposes a consistent set of static methods:
 
 ```ts
-class SomeVo extends PrimitiveVo<T> {
+class Some extends Primitive<T> {
   // Validate a primitive value. Returns the normalized value when there's
   // a transformation (e.g. trimming, lowercasing); otherwise returns void.
   static validate(value: T, options?: ValidateOptions): T | void;
 
   // Validate a string representation and return the parsed primitive.
-  // Available where parsing applies (NumberVo, BooleanVo, IntegerVo, ...).
+  // Available where parsing applies (Decimal, Bool, Integer, ...).
   static validateString(value: string, options?: ValidateOptions): T;
 
   // Factory methods. Validate first, then build the instance.
-  static fromX(value: T, options?: ValidateOptions): SomeVo;
-  static fromString(value: string, options?: ValidateOptions): SomeVo;
+  static fromX(value: T, options?: ValidateOptions): Some;
+  static fromString(value: string, options?: ValidateOptions): Some;
 }
 ```
 
@@ -122,10 +122,10 @@ Every failure throws an `InvalidValueError` with the offending input attached as
 The `validate` / `validateString` methods are useful when you need to check input but don't want to allocate a Value Object:
 
 ```ts
-import { IntegerVo } from '@chuli-dev/value-objects';
+import { Integer } from '@chuli-dev/value-objects';
 
 if (req.query.page) {
-  IntegerVo.validateString(req.query.page); // throws if invalid
+  Integer.validateString(req.query.page); // throws if invalid
 }
 ```
 
@@ -134,27 +134,27 @@ if (req.query.page) {
 Value Objects compare by **structural equality**, not by reference:
 
 ```ts
-import { StringVo } from '@chuli-dev/value-objects';
+import { Text } from '@chuli-dev/value-objects';
 
-const a = StringVo.fromString('hello');
-const b = StringVo.fromString('hello');
+const a = Text.fromString('hello');
+const b = Text.fromString('hello');
 
 a === b; // false
 a.isEqualTo(b); // true
 ```
 
-`isEqualTo` also checks that both operands are instances of the same concrete class, so a `StringVo` and a `UuidVo` carrying the same string are not considered equal.
+`isEqualTo` also checks that both operands are instances of the same concrete class, so a `Text` and a `Uuid` carrying the same string are not considered equal.
 
 ## 🧱 Creating your own Value Objects
 
 Extend any of the provided classes to model domain-specific concepts:
 
 ```ts
-import { InvalidValueError, StringVo, type ValidateOptions } from '@chuli-dev/value-objects';
+import { InvalidValueError, Text, type ValidateOptions } from '@chuli-dev/value-objects';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export class EmailVo extends StringVo {
+export class Email extends Text {
   static override validate(value: string, options: ValidateOptions = {}): string {
     const trimmed = super.validate(value, options);
 
@@ -167,8 +167,8 @@ export class EmailVo extends StringVo {
     return trimmed.toLowerCase();
   }
 
-  static override fromString(value: string, options: ValidateOptions = {}): EmailVo {
-    return new EmailVo(EmailVo.validate(value, options));
+  static override fromString(value: string, options: ValidateOptions = {}): Email {
+    return new Email(Email.validate(value, options));
   }
 }
 ```
@@ -182,7 +182,7 @@ A few rules to keep the contract consistent:
 ## 📝 Notes
 
 - Value Objects are immutable by convention (`readonly` fields). They are not frozen at runtime to keep allocation cheap.
-- `UuidVo.create()` relies on the global `crypto.randomUUID()`. It works in Node.js `>=19`, modern browsers (secure contexts only), Bun and Deno.
+- `Uuid.create()` relies on the global `crypto.randomUUID()`. It works in Node.js `>=19`, modern browsers (secure contexts only), Bun and Deno.
 - `InvalidValueError` extends `ValidationError` from [`@chuli-dev/errors`](https://www.npmjs.com/package/@chuli-dev/errors), so you can catch any validation failure from this library — including your own subclasses — by `instanceof InvalidValueError`.
 
 ## 🔧 Requirements
