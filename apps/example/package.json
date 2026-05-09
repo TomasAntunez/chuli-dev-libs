@@ -6,12 +6,13 @@
   "description": "Example app to test libraries",
   "scripts": {
     "start:dev": "tsx watch src/main.ts",
-    "types:check": "tsc --noEmit -p tsconfig.json",
+    "types:check": "tsc --noEmit",
     "lint:check": "eslint . --max-warnings 0"
   },
   "author": "chuli-dev",
   "dependencies": {
-    "@chuli-dev/errors": "*"
+    "@chuli-dev/errors": "*",
+    "@chuli-dev/value-objects": "*"
   },
   "devDependencies": {
     "@chuli-dev/eslint-config": "*",

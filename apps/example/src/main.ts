@@ -6,6 +6,14 @@ import {
   NotFoundError,
   ValidationError,
 } from '@chuli-dev/errors';
+import {
+  Decimal,
+  Integer,
+  InvalidValueError,
+  PositiveInteger,
+  Text,
+  Uuid,
+} from '@chuli-dev/value-objects';
 
 const tryThrow = (fn: () => unknown): void => {
   try {
@@ -70,3 +78,33 @@ console.log(`  err instanceof ValidationError: ${String(err instanceof Validatio
 console.log(`  err instanceof BaseError:       ${String(err instanceof BaseError)}`);
 console.log(`  err instanceof Error:           ${String(err instanceof Error)}`);
 console.log(`  err.name:                       ${err.name}`);
+
+console.log('\n=== Value Objects ===');
+
+const id = Uuid.create();
+const name = Text.fromString('  Tomas  ');
+const price = Decimal.fromNumber(19.99);
+const quantity = PositiveInteger.fromNumber(3);
+
+console.log(`id:       ${id.toString()}`);
+console.log(`name:     "${name.toString()}" (trimmed)`);
+console.log(`price:    ${price.toString()}`);
+console.log(`quantity: ${quantity.toString()}`);
+
+const a = Text.fromString('hello');
+const b = Text.fromString('hello');
+console.log('\nigualdad estructural:');
+console.log(`  a === b:        ${String(a === b)}`);
+console.log(`  a.isEqualTo(b): ${String(a.isEqualTo(b))}`);
+
+console.log('\nInvalidValueError instanceof cross-package:');
+try {
+  Integer.fromString('not-a-number');
+} catch (e) {
+  if (e instanceof InvalidValueError) {
+    console.log(`  e instanceof InvalidValueError: true`);
+    console.log(`  e instanceof ValidationError:   ${String(e instanceof ValidationError)}`);
+    console.log(`  e instanceof BaseError:         ${String(e instanceof BaseError)}`);
+    console.log(`  e.metadata:`, e.metadata);
+  }
+}
