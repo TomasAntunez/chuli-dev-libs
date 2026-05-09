@@ -30,6 +30,11 @@ on:
         required: false
         type: boolean
         default: false
+      value-objects:
+        description: '@chuli-dev/value-objects'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   publish:

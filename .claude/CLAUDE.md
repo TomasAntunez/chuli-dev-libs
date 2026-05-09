@@ -12,14 +12,14 @@ Keep everything as minimal as possible without sacrificing robustness. Clean, si
 
 ## Repository Layout
 
-- `libs/` — Published packages: `typescript-config`, `eslint-config`, `prettier-config`, `errors`
+- `libs/` — Published packages: `typescript-config`, `eslint-config`, `prettier-config`, `errors`, `value-objects`
 - `apps/` — Internal/private apps (`example`, `cli`) used to dogfood the libraries
 
 ## Common Commands
 
 ```bash
 # Install all dependencies (from root). Libraries with a `prepare` hook
-# (eslint-config, errors) are built automatically as part of install.
+# (eslint-config, errors, value-objects) are built automatically as part of install.
 npm install
 
 # Run the example app in dev mode
@@ -41,8 +41,10 @@ npm run build --workspace=@chuli-dev/eslint-config
 - **eslint-config**: TypeScript source in `src/` that builds to `dist/`. Provides composable ESLint flat config presets (`base`, `node`, `typescript`, `typescriptTypechecked`).
 - **prettier-config**: Single JSON config file, no build step.
 - **errors**: TypeScript source in `src/` that builds to `dist/`. Domain-oriented error classes.
-- Libraries that build (`eslint-config`, `errors`) use the `prepare` lifecycle hook, so `npm install` from root produces a ready-to-use `dist/` for workspace consumers and for `npm publish`.
+- **value-objects**: TypeScript source in `src/` that builds to `dist/`. DDD-style Value Object base classes and primitives. Cross-platform (uses `lib` tsconfig, no Node-specific typings); declares `@chuli-dev/errors` as a `peerDependency` so consumers share a single instance across libs.
+- Libraries that build (`eslint-config`, `errors`, `value-objects`) use the `prepare` lifecycle hook, so `npm install` from root produces a ready-to-use `dist/` for workspace consumers and for `npm publish`.
 - Libraries reference each other via workspace `"*"` versions (e.g., `eslint-config` depends on `typescript-config` for its own build).
+- The root `.npmrc` sets `foreground-scripts=true` to serialize workspace `prepare` scripts in topological order, avoiding races where a consumer lib (e.g. `value-objects`) builds before its dependency (e.g. `errors`) finishes.
 - Root `package.json` sets the Prettier config for the entire repo via `"prettier": "@chuli-dev/prettier-config"`.
 
 ## Quality Gates
