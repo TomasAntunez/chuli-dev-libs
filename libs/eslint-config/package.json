@@ -14,7 +14,7 @@
     "url": "git+https://github.com/TomasAntunez/chuli-dev-libs.git",
     "directory": "libs/eslint-config"
   },
-  "homepage": "https://github.com/TomasAntunez/chuli-dev-libs/blob/main/libs/eslint-config/README.md",
+  "homepage": "https://github.com/TomasAntunez/chuli-dev-libs/tree/main/libs/eslint-config",
   "bugs": {
     "url": "https://github.com/TomasAntunez/chuli-dev-libs/issues"
   },

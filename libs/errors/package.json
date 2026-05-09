@@ -16,7 +16,7 @@
     "url": "git+https://github.com/TomasAntunez/chuli-dev-libs.git",
     "directory": "libs/errors"
   },
-  "homepage": "https://github.com/TomasAntunez/chuli-dev-libs/blob/main/libs/errors/README.md",
+  "homepage": "https://github.com/TomasAntunez/chuli-dev-libs/tree/main/libs/errors",
   "bugs": {
     "url": "https://github.com/TomasAntunez/chuli-dev-libs/issues"
   },

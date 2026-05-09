@@ -16,7 +16,7 @@
     "url": "git+https://github.com/TomasAntunez/chuli-dev-libs.git",
     "directory": "libs/value-objects"
   },
-  "homepage": "https://github.com/TomasAntunez/chuli-dev-libs/blob/main/libs/value-objects/README.md",
+  "homepage": "https://github.com/TomasAntunez/chuli-dev-libs/tree/main/libs/value-objects",
   "bugs": {
     "url": "https://github.com/TomasAntunez/chuli-dev-libs/issues"
   },

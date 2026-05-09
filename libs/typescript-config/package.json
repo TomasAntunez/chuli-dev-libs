@@ -15,7 +15,7 @@
     "url": "git+https://github.com/TomasAntunez/chuli-dev-libs.git",
     "directory": "libs/typescript-config"
   },
-  "homepage": "https://github.com/TomasAntunez/chuli-dev-libs/blob/main/libs/typescript-config/README.md",
+  "homepage": "https://github.com/TomasAntunez/chuli-dev-libs/tree/main/libs/typescript-config",
   "bugs": {
     "url": "https://github.com/TomasAntunez/chuli-dev-libs/issues"
   },
