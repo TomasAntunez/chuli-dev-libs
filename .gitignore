@@ -3,3 +3,6 @@
 
 # Build outputs
 **/dist
+
+# Local Claude Code settings
+.claude/settings.local.json
