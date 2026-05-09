@@ -1,6 +1,6 @@
 {
   "name": "@chuli-dev/typescript-config",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "type": "module",
   "description": "TypeScript base configuration for libraries and applications",
   "keywords": [
@@ -25,8 +25,11 @@
   "files": [
     "base.json",
     "lib.json",
+    "lib.cjs.json",
     "node.json",
     "node.lib.json",
+    "node.cjs.json",
+    "node.cjs.lib.json",
     "web.json",
     "react.json",
     "README.md",
@@ -35,8 +38,11 @@
   "exports": {
     "./base": "./base.json",
     "./lib": "./lib.json",
+    "./lib.cjs": "./lib.cjs.json",
     "./node": "./node.json",
     "./node.lib": "./node.lib.json",
+    "./node.cjs": "./node.cjs.json",
+    "./node.cjs.lib": "./node.cjs.lib.json",
     "./web": "./web.json",
     "./react": "./react.json"
   },

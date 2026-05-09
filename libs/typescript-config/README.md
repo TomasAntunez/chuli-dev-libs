@@ -1,10 +1,10 @@
 # @chuli-dev/typescript-config
 
-Strict TypeScript configuration presets optimized for modern ESM development.
+Strict TypeScript configuration presets for ESM and CommonJS projects.
 
 ## ✨ Features
 
-- **ESM-first** - Optimized for native ES Modules
+- **ESM and CommonJS** - Dedicated presets for both module systems
 - **Strict by default** - Most strict TypeScript validations enabled
 - **Multi-platform** - Configurations for Node.js, Web, React, and libraries
 - **Zero-config** - Sensible defaults that work out of the box
@@ -100,21 +100,43 @@ Use this setup for framework-agnostic libraries when your source code lives in `
 
 Use this setup for libraries that run in Node.js and need Node.js typings.
 
+### CommonJS Variants
+
+For projects that target CommonJS (or for the CJS half of a dual ESM/CJS build), use the `.cjs` variants:
+
+```json
+{
+  "extends": "@chuli-dev/typescript-config/node.cjs",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["dist", "node_modules", "**/*.test.ts", "**/*.spec.ts"]
+}
+```
+
+Available CJS presets: `lib.cjs`, `node.cjs`, `node.cjs.lib`. They emit `module: "CommonJS"` with `moduleResolution: "Node10"` and disable `verbatimModuleSyntax` (incompatible with CommonJS output).
+
 ## 📋 Available Configurations
 
-| Configuration  | Description                           | Use Case                |
-| -------------- | ------------------------------------- | ----------------------- |
-| **`base`**     | Minimal setup with strict validations | Custom setups           |
-| **`lib`**      | Library with declaration generation   | Publishing npm packages |
-| **`node`**     | Node.js with ES modules               | Server applications     |
-| **`node.lib`** | Node.js library with Node typings     | Node.js packages        |
-| **`web`**      | Browser environment                   | Web applications        |
-| **`react`**    | React with JSX support                | React applications      |
+| Configuration      | Description                                  | Use Case                    |
+| ------------------ | -------------------------------------------- | --------------------------- |
+| **`base`**         | Minimal ESM setup with strict validations    | Custom ESM setups           |
+| **`lib`**          | ESM library with declaration generation      | Publishing ESM npm packages |
+| **`lib.cjs`**      | CommonJS library with declaration generation | Publishing CJS npm packages |
+| **`node`**         | Node.js ESM with Node typings                | ESM server applications     |
+| **`node.lib`**     | Node.js ESM library with Node typings        | ESM Node.js packages        |
+| **`node.cjs`**     | Node.js CommonJS with Node typings           | CJS server applications     |
+| **`node.cjs.lib`** | Node.js CommonJS library with Node typings   | CJS Node.js packages        |
+| **`web`**          | Browser environment (ESM)                    | Web applications            |
+| **`react`**        | React with JSX support (ESM)                 | React applications          |
 
 ## 📝 Notes
 
 - Library presets only enable `declaration` and `declarationMap`. Configure `rootDir`, `outDir`, `include`, and `exclude` in your project.
-- Use `lib` for framework-agnostic libraries, and `node.lib` when your library targets Node.js and needs Node typings.
+- Use `lib` / `lib.cjs` for framework-agnostic libraries, and `node.lib` / `node.cjs.lib` when your library needs Node typings.
+- For dual ESM/CJS builds, run `tsc` twice with `lib` (or `node.lib`) and `lib.cjs` (or `node.cjs.lib`) outputting to separate folders.
 - The `exclude` patterns shown are examples. Keep tests in `exclude` only if they should not be part of your build output.
 - `noUnusedLocals` is not enabled by default. Turn it on if you want it.
 
