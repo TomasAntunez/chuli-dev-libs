@@ -13,6 +13,7 @@
     "types:check": "npm run types:check --workspaces --if-present",
     "format:check": "prettier --check .",
     "lint:check": "npm run lint:check --workspaces --if-present",
+    "cli": "tsx apps/cli/src/main.ts",
     "start:dev:example": "npm run --workspace=@chuli-dev/example start:dev"
   },
   "author": "chuli-dev",
