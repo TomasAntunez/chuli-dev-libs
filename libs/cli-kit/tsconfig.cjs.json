@@ -1,0 +1,6 @@
+{
+  "extends": ["./tsconfig.json", "@chuli-dev/typescript-config/node.cjs.lib"],
+  "compilerOptions": {
+    "outDir": "dist/cjs"
+  }
+}
