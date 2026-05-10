@@ -9,6 +9,6 @@ export abstract class Primitive<T extends string | number | boolean> extends Val
   }
 
   isEqualTo(other: this): boolean {
-    return other.constructor === this.constructor && this.value === other.value;
+    return this.value === other.value;
   }
 }

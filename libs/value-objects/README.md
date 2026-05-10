@@ -61,7 +61,7 @@ try {
 
 | Class             | Description                                                         |
 | ----------------- | ------------------------------------------------------------------- |
-| **`ValueObject`** | Abstract marker base class. Defines the `isEqualTo` contract        |
+| **`ValueObject`** | Abstract marker base class for all Value Objects                    |
 | **`Primitive`**   | Abstract base for single-value primitives (string, number, boolean) |
 
 ### Primitives
@@ -143,7 +143,7 @@ a === b; // false
 a.isEqualTo(b); // true
 ```
 
-`isEqualTo` also checks that both operands are instances of the same concrete class, so a `Text` and a `Uuid` carrying the same string are not considered equal.
+`isEqualTo` checks the wrapped value only. Two `Primitive<T>` instances with matching values are equal even across the inheritance hierarchy — for example, a `Text` and a custom `Email extends Text` carrying the same string. TypeScript enforces type compatibility at compile time via the `other: this` parameter, so you can't accidentally compare across unrelated primitive types (e.g. `Text` with `Decimal`).
 
 ## 🧱 Creating your own Value Objects
 

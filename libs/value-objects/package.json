@@ -1,6 +1,6 @@
 {
   "name": "@chuli-dev/value-objects",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "module",
   "description": "Value object base class and primitives for DDD",
   "keywords": [
