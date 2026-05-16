@@ -20,12 +20,8 @@ export class Option extends ValueObject {
   constructor(props: OptionProps) {
     super();
     this.name = props.name;
-    if (props.shortName !== undefined) {
-      this.shortName = props.shortName;
-    }
-    if (props.description !== undefined) {
-      this.description = props.description;
-    }
+    this.shortName = props.shortName;
+    this.description = props.description;
     this.isRequired = props.isRequired ?? BOOL_FALSE;
   }
 }

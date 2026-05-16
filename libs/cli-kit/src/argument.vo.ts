@@ -19,9 +19,7 @@ export class Argument extends ValueObject {
   constructor(props: ArgumentProps) {
     super();
     this.name = props.name;
-    if (props.description !== undefined) {
-      this.description = props.description;
-    }
+    this.description = props.description;
     this.isRequired = props.isRequired ?? BOOL_TRUE;
     this.isVariadic = props.isVariadic ?? BOOL_FALSE;
   }

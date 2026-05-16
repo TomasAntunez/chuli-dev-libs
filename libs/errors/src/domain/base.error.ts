@@ -11,12 +11,8 @@ export abstract class BaseError extends Error {
     super(message, options);
     this.name = new.target.name;
 
-    if (options.code !== undefined) {
-      this.code = options.code;
-    }
-    if (options.metadata !== undefined) {
-      this.metadata = options.metadata;
-    }
+    this.code = options.code;
+    this.metadata = options.metadata;
 
     if (typeof Error.captureStackTrace === 'function') {
       Error.captureStackTrace(this, new.target);
