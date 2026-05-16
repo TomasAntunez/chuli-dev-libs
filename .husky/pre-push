@@ -1,12 +1,8 @@
 set -e
 
 echo ""
-echo "→ Installing dependencies (builds libs via their prepare hook)"
+echo "→ Installing dependencies (postinstall builds the whole graph via tsc -b)"
 HUSKY=0 npm install
-
-echo ""
-echo "→ Type checking apps"
-npm run types:check
 
 echo ""
 echo "→ Linting"
