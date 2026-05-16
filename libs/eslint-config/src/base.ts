@@ -9,7 +9,7 @@ const importSortGroups: string[][] = [
   ['^\\u0000'],
   ['^node:'],
   ['^@?\\w'],
-  ['^(@/|~\\/|src/|app/|libs/|@libs/|@shared/)'],
+  ['^(@/|~\\/|src/|@src/|app/|@app/|libs/|@libs/|packages/|@packages/|shared/|@shared/)'],
   ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
   ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
 ];
