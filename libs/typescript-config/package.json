@@ -1,6 +1,6 @@
 {
   "name": "@chuli-dev/typescript-config",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "type": "module",
   "description": "Strict TypeScript configuration presets for ESM and CommonJS projects",
   "keywords": [
@@ -32,8 +32,6 @@
     "node.lib.json",
     "node.cjs.json",
     "node.cjs.lib.json",
-    "web.json",
-    "react.json",
     "README.md",
     "LICENSE"
   ],
@@ -44,9 +42,7 @@
     "./node": "./node.json",
     "./node.lib": "./node.lib.json",
     "./node.cjs": "./node.cjs.json",
-    "./node.cjs.lib": "./node.cjs.lib.json",
-    "./web": "./web.json",
-    "./react": "./react.json"
+    "./node.cjs.lib": "./node.cjs.lib.json"
   },
   "peerDependencies": {
     "typescript": ">=5"

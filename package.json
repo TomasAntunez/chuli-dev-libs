@@ -9,12 +9,14 @@
     "libs/*"
   ],
   "scripts": {
-    "prepare": "husky",
-    "types:check": "npm run types:check --workspaces --if-present",
+    "postinstall": "husky && npm run build",
+    "build": "tsc -b tsconfig.build.esm.json tsconfig.build.cjs.json && npm run write-pkg-jsons",
+    "build:clean": "npm run write-pkg-jsons -- --clean && tsc -b tsconfig.build.esm.json tsconfig.build.cjs.json --clean",
+    "write-pkg-jsons": "npm run start:cli -- write-dist-package-jsons",
+    "start:cli": "npm run start --workspace=@chuli-dev/cli --",
+    "start:example": "npm run start --workspace=@chuli-dev/example",
     "format:check": "prettier --check .",
-    "lint:check": "npm run lint:check --workspaces --if-present",
-    "cli": "tsx apps/cli/src/main.ts",
-    "start:dev:example": "npm run --workspace=@chuli-dev/example start:dev"
+    "lint:check": "npm run lint:check --workspaces --if-present"
   },
   "author": "chuli-dev",
   "prettier": "@chuli-dev/prettier-config",
@@ -25,8 +27,6 @@
     "@types/node": "^25.2.0",
     "husky": "^9.1.7",
     "prettier": "^3.8.1",
-    "rimraf": "^6.1.2",
-    "tsx": "^4.21.0",
     "typescript": "^6.0.3"
   },
   "engines": {

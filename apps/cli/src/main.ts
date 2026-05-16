@@ -6,7 +6,7 @@ const commands = {
 
 type CommandName = keyof typeof commands;
 
-const [, , name] = process.argv;
+const [, , name, ...args] = process.argv;
 const handler = name ? commands[name as CommandName] : undefined;
 
 if (!handler) {
@@ -14,4 +14,4 @@ if (!handler) {
   throw new Error(`Unknown command: ${name ?? '(none)'}. Available: ${available}`);
 }
 
-handler();
+handler(args);

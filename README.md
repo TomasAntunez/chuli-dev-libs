@@ -38,21 +38,27 @@ cd chuli-dev-libs
 npm install
 ```
 
-`npm install` builds the libraries that need a build (via the `prepare` lifecycle hook), so workspaces and external consumers both end up with a ready-to-use `dist/`.
+`npm install` triggers the root `postinstall`, which runs `husky` and then builds the whole project with `tsc -b` (TypeScript project references in topological order with incremental caching). Every workspace ends up with a ready-to-use `dist/`.
 
-**Quality gates** (each fans out to workspaces):
+**Common commands:**
 
 ```bash
-npm run types:check    # tsc --noEmit per app (libs typecheck during build)
-npm run lint:check     # eslint with --max-warnings 0
+npm run build          # tsc -b (incremental) + per-flavor dist package.jsons
+npm run build:clean    # tear down all build artifacts
+
+npm run lint:check     # eslint with --max-warnings 0 across workspaces
 npm run format:check   # prettier check across the repo
+
+npm run start:example  # run the example app from its built dist
+npm run start:cli -- <command>   # run the internal cli
 ```
 
-Run a script on a single workspace with `--workspace`:
+Type checking is not a separate gate: `tsc -b` is part of the build, so any type error fails the install/build itself.
+
+Run lint on a single workspace with `--workspace`:
 
 ```bash
 npm run lint:check --workspace=@chuli-dev/errors
-npm run build --workspace=@chuli-dev/eslint-config
 ```
 
 ## 📚 Documentation

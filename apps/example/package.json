@@ -5,8 +5,7 @@
   "type": "module",
   "description": "Example app to test libraries",
   "scripts": {
-    "start:dev": "tsx watch src/main.ts",
-    "types:check": "tsc --noEmit",
+    "start": "node dist/main.js",
     "lint:check": "eslint . --max-warnings 0"
   },
   "author": "chuli-dev",

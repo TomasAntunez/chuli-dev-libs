@@ -17,7 +17,14 @@ const importSortGroups: string[][] = [
 export const base: Linter.Config[] = [
   {
     name: '@chuli-dev/base/ignores',
-    ignores: ['**/node_modules/**', '**/dist/**', '**/build/**', '**/.next/**', '**/coverage/**'],
+    ignores: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/build/**',
+      '**/.next/**',
+      '**/coverage/**',
+      '**/.tsbuildinfo*',
+    ],
   },
 
   js.configs.recommended,

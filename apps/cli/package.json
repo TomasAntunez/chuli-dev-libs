@@ -5,8 +5,7 @@
   "type": "module",
   "description": "Internal CLI for monorepo tasks",
   "scripts": {
-    "start:dev": "tsx src/main.ts",
-    "types:check": "tsc --noEmit",
+    "start": "node dist/main.js",
     "lint:check": "eslint . --max-warnings 0"
   },
   "author": "chuli-dev",

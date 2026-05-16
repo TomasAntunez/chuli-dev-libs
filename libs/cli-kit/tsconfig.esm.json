@@ -1,6 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist/esm"
-  }
+    "outDir": "dist/esm",
+    "tsBuildInfoFile": ".tsbuildinfo.esm"
+  },
+  "references": [
+    { "path": "../errors/tsconfig.esm.json" },
+    { "path": "../value-objects/tsconfig.esm.json" }
+  ]
 }

@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "libs/errors/tsconfig.cjs.json" },
+    { "path": "libs/value-objects/tsconfig.cjs.json" },
+    { "path": "libs/cli-kit/tsconfig.cjs.json" }
+  ]
+}
