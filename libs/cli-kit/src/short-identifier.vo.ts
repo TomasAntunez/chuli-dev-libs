@@ -1,18 +1,22 @@
-import { InvalidValueError } from '@chuli-dev/value-objects';
+import { InvalidValueError, Text } from '@chuli-dev/value-objects';
 
-import { Identifier } from './identifier.vo.js';
+const SHORT_IDENTIFIER_PATTERN = /^[a-z]$/;
 
-export class ShortIdentifier extends Identifier {
+export class ShortIdentifier extends Text {
   static override validate(value: string): string {
-    const validated = super.validate(value);
+    const trimmed = super.validate(value, {
+      message: 'Short identifier must be a non-empty string',
+    });
 
-    if (validated.length !== 1) {
-      throw new InvalidValueError('Short identifier must be exactly one character', {
+    const normalized = trimmed.toLowerCase();
+
+    if (!SHORT_IDENTIFIER_PATTERN.test(normalized)) {
+      throw new InvalidValueError('Short identifier must be exactly one letter', {
         metadata: { value },
       });
     }
 
-    return validated;
+    return normalized;
   }
 
   static override fromString(value: string): ShortIdentifier {
