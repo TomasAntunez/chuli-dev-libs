@@ -6,6 +6,7 @@ Strict TypeScript configuration presets for ESM and CommonJS projects.
 
 - **ESM and CommonJS** - Dedicated presets for both module systems
 - **Strict by default** - Most strict TypeScript validations enabled
+- **Multi-platform** - Presets for Node.js, Web, React, and libraries
 - **Library presets are composite** - Ready for TypeScript project references
 - **Zero-config** - Sensible defaults that work out of the box
 
@@ -30,6 +31,41 @@ Choose the configuration that matches your project:
   },
   "include": ["src/**/*.ts"],
   "exclude": ["dist", "node_modules", "**/*.test.ts", "**/*.spec.ts"]
+}
+```
+
+### Web/Browser Application
+
+```json
+{
+  "extends": "@chuli-dev/typescript-config/web",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["dist", "node_modules", "**/*.test.ts", "**/*.spec.ts"]
+}
+```
+
+### React Application
+
+```json
+{
+  "extends": "@chuli-dev/typescript-config/react",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
+  ]
 }
 ```
 
@@ -94,6 +130,8 @@ Available CJS presets: `lib.cjs`, `node.cjs`, `node.cjs.lib`. They emit `module:
 | **`node.lib`**     | Node.js ESM library (composite, declaration via composite)      | ESM Node.js packages        |
 | **`node.cjs`**     | Node.js CommonJS with Node typings                              | CJS server applications     |
 | **`node.cjs.lib`** | Node.js CommonJS library (composite, declaration via composite) | CJS Node.js packages        |
+| **`web`**          | Browser environment (ESM)                                       | Web applications            |
+| **`react`**        | React with JSX support (ESM)                                    | React applications          |
 
 ## 📝 Notes
 
