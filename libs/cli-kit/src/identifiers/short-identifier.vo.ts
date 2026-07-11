@@ -19,7 +19,7 @@ export class ShortIdentifier extends Text {
     return normalized;
   }
 
-  static override fromString(value: string): ShortIdentifier {
+  static override fromString(this: void, value: string): ShortIdentifier {
     return new ShortIdentifier(ShortIdentifier.validate(value));
   }
 }

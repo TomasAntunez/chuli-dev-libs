@@ -20,7 +20,7 @@ export class Identifier extends Text {
     return normalized;
   }
 
-  static override fromString(value: string): Identifier {
+  static override fromString(this: void, value: string): Identifier {
     return new Identifier(Identifier.validate(value));
   }
 }
