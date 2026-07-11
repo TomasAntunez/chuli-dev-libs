@@ -18,7 +18,7 @@ export class Uuid extends Text {
     return trimmed.toLowerCase();
   }
 
-  static override fromString(value: string, options: ValidateOptions = {}): Uuid {
+  static override fromString(this: void, value: string, options: ValidateOptions = {}): Uuid {
     return new Uuid(Uuid.validate(value, options));
   }
 

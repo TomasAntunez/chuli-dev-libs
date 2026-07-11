@@ -28,7 +28,7 @@ export class Bool extends Primitive<boolean> {
     });
   }
 
-  static fromBoolean(value: boolean, options: ValidateOptions = {}): Bool {
+  static fromBoolean(this: void, value: boolean, options: ValidateOptions = {}): Bool {
     Bool.validate(value, options);
     return new Bool(value);
   }

@@ -1,9 +1,9 @@
 import { ValueObject } from './value-object.vo.js';
 
-export abstract class Primitive<T extends string | number | boolean> extends ValueObject {
-  protected readonly value: T;
+export abstract class Primitive<TValue extends string | number | boolean> extends ValueObject {
+  protected readonly value: TValue;
 
-  protected constructor(value: T) {
+  protected constructor(value: TValue) {
     super();
     this.value = value;
   }

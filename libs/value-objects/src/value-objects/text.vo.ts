@@ -21,7 +21,7 @@ export class Text extends Primitive<string> {
     return trimmed;
   }
 
-  static fromString(value: string, options: ValidateOptions = {}): Text {
+  static fromString(this: void, value: string, options: ValidateOptions = {}): Text {
     return new Text(Text.validate(value, options));
   }
 

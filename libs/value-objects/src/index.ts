@@ -1,5 +1,6 @@
 export { InvalidValueError } from './errors/invalid-value.error.js';
 export type { ValidateOptions } from './interfaces/validate-options.js';
+export { parseOptional } from './utils/parse-optional.js';
 export { Bool } from './value-objects/bool.vo.js';
 export { Decimal } from './value-objects/decimal.vo.js';
 export { Integer } from './value-objects/integer.vo.js';
