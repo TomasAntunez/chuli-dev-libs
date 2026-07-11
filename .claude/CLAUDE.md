@@ -12,6 +12,10 @@ Keep everything as minimal as possible without sacrificing robustness. Clean, si
 
 Use blank lines to separate logical groups of statements anywhere it improves readability — inside functions, between class members, between steps of a CI workflow, between config blocks. Don't run unrelated pieces together in a wall, and don't fragment every line either: group what belongs together and let the blank lines mark the seams.
 
+## Workflow
+
+Never run `git commit` (or any other write operation against git history) on your own. Stage and commit only when the user explicitly asks for it. You may freely edit files, run builds, and run lint/format checks without confirmation.
+
 ## Repository Layout
 
 - `libs/` — Published packages: `typescript-config`, `eslint-config`, `prettier-config`, `errors`, `value-objects`, `cli-kit`
