@@ -9,6 +9,9 @@
     "lint:check": "eslint . --max-warnings 0"
   },
   "author": "chuli-dev",
+  "dependencies": {
+    "@chuli-dev/cli-kit": "*"
+  },
   "devDependencies": {
     "@chuli-dev/eslint-config": "*",
     "@chuli-dev/typescript-config": "*",
