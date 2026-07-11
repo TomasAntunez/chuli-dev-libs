@@ -15,6 +15,8 @@ export const typescriptBase: Linter.Config[] = [
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-non-null-assertion': 'error',
 
+      '@typescript-eslint/no-invalid-void-type': ['error', { allowAsThisParameter: true }],
+
       '@typescript-eslint/explicit-function-return-type': [
         'error',
         {
