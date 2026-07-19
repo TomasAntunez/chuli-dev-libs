@@ -4,13 +4,16 @@
   "private": true,
   "type": "module",
   "description": "Internal CLI for monorepo tasks",
+  "bin": {
+    "chuli-dev": "bin/chuli-dev.js"
+  },
   "scripts": {
-    "start": "node dist/main.js",
     "lint:check": "eslint . --max-warnings 0"
   },
   "author": "chuli-dev",
   "dependencies": {
-    "@chuli-dev/cli-kit": "*"
+    "@chuli-dev/cli-kit": "*",
+    "@chuli-dev/errors": "*"
   },
   "devDependencies": {
     "@chuli-dev/eslint-config": "*",

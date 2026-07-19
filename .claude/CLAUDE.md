@@ -40,8 +40,8 @@ npm run build:clean
 # Run the example app (uses the built dist).
 npm run start:example
 
-# Run the internal cli app (uses the built dist).
-npm run start:cli -- <command-name>
+# Run the internal cli app (bin linked by npm install; uses the built dist).
+npx chuli-dev <command-name>
 
 # Quality gates
 npm run lint:check

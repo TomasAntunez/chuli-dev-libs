@@ -1,17 +1,12 @@
-import { writeDistPackageJsons } from './commands/write-dist-package-jsons.js';
+import { Cli } from '@chuli-dev/cli-kit';
 
-const commands = {
-  'write-dist-package-jsons': writeDistPackageJsons,
-} as const;
+import { WriteDistPackageJsonsCommand } from './commands/write-dist-package-jsons.command.js';
 
-type CommandName = keyof typeof commands;
+const cli = Cli.fromPrimitives({
+  name: 'chuli-dev',
+  version: '0.0.1',
+  description: 'Internal CLI for the chuli-dev monorepo',
+  commands: [new WriteDistPackageJsonsCommand()],
+});
 
-const [, , name, ...args] = process.argv;
-const handler = name ? commands[name as CommandName] : undefined;
-
-if (!handler) {
-  const available = Object.keys(commands).join(', ');
-  throw new Error(`Unknown command: ${name ?? '(none)'}. Available: ${available}`);
-}
-
-handler(args);
+await cli.run();
