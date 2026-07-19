@@ -1,3 +1,4 @@
+export { Cli } from './cli/cli.js';
 export { Command } from './commands/command.js';
 export { CommandConfig } from './commands/command-config.vo.js';
 export { type CommandInput } from './commands/command-input.dto.js';
